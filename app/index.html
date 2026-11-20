@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Sunset — GTA 6-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="brand">
+  <div class="brandMark" aria-hidden="true">VI</div>
+  <div>
+    <h1>VICE SUNSET</h1>
+    <p>Cover Studio — turn your photo and a caption into GTA 6-style poster art. Photos never leave your machine.</p>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="controls" aria-label="Cover controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <p class="hint">Upload your own, or tap a sample. Click a panel in the preview to pick which photo it shows.</p>
+      <div id="photoInputs"></div>
+      <div id="samples" class="samples"></div>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layoutBtns" class="pickRow"></div>
+    </section>
+
+    <section>
+      <h2>3 · Colour grade</h2>
+      <div id="presetBtns" class="pickRow"></div>
+    </section>
+
+    <section>
+      <h2>4 · Caption</h2>
+      <label>Title
+        <input id="caption" type="text" maxlength="48" value="Sunset Heist">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="VICE CITY · 2026">
+      </label>
+      <div id="letterBtns" class="pickRow"></div>
+      <div class="toggles">
+        <label><input id="badge" type="checkbox" checked> VI badge</label>
+        <label><input id="grain" type="checkbox" checked> Film grain</label>
+        <label><input id="halftone" type="checkbox" checked> Halftone dots</label>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 · Selected panel</h2>
+      <p class="hint" id="panelLabel">Panel 1 · photo 1</p>
+      <label>Zoom <span id="zoomVal">1.00x</span>
+        <input id="zoom" type="range" min="1" max="4" step="0.01" value="1">
+      </label>
+      <label>Move sideways
+        <input id="panX" type="range" min="-1" max="1" step="0.01" value="0">
+      </label>
+      <label>Move up / down
+        <input id="panY" type="range" min="-1" max="1" step="0.01" value="0">
+      </label>
+      <button id="resetPhoto" type="button" class="ghost">Reset photo position</button>
+    </section>
+
+    <section>
+      <h2>6 · Export</h2>
+      <div id="sizeBtns" class="pickRow"></div>
+      <button id="exportBtn" type="button" class="primary">Export PNG</button>
+      <button id="exportAllBtn" type="button" class="ghost">Export all three sizes</button>
+      <p id="status" role="status">Loading…</p>
+    </section>
+  </aside>
+
+  <section class="preview" aria-label="Live cover preview">
+    <canvas id="cover" width="1080" height="1350" aria-label="The cover art"></canvas>
+    <p class="hint">Live preview — click a panel to select it, drag to move its photo, scroll to zoom.</p>
+  </section>
+</main>
+
+<footer>
+  <p>An original design. No Rockstar Games logo, artwork or font is used, and the built-in photos are drawn with code — see tools/generate-samples.py. Works fully offline.</p>
+</footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
